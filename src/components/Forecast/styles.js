@@ -31,6 +31,10 @@ export const MainBanner = styled.div`
 	justify-content: space-between;
 	flex: 1;
 	margin-bottom: 40px;
+
+	& div:first-child {
+		margin-right: 50px;
+	}
 `;
 
 export const Footer = styled.div`

@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { useTheme } from './hooks/useTheme';
 import { Forecast } from './components/Forecast/';
 import { useForecast } from './hooks/useForecast';
-
+import { useInitial } from './hooks/useInitial';
 export const App = () => {
-	const { isError, isLoading, forecast } = useForecast();
 	const { currentTheme, setIsNight } = useTheme();
+	const { isError, isLoading, forecast, getForecast } = useForecast();
+
+	useInitial(getForecast);
 
 	console.log('RENDER APP');
+	console.log(forecast);
 
 	return (
 		<ThemeProvider theme={{ currentTheme, setIsNight }}>
 			<>
-				{/* isLoading && <Loading/> */}
+				{/* {isLoading && <h1>Loading...</h1>} */}
 				{/* isError && <Error/> */}
 				{forecast && (
 					<Overlay>
 						<h1>
-							<Forecast />
+							<Forecast forecast={forecast} getForecast={getForecast} />
 						</h1>
 					</Overlay>
 				)}
