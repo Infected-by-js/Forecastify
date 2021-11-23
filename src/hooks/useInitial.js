@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 
 export const useInitial = (getForecast) => {
 	const successLocationFound = async (position, getForecast) => {
-		console.log('INITIAL FETCHING BY LOCATION...');
-
 		try {
 			const { latitude, longitude } = position.coords;
 			await getForecast({ coords: [latitude, longitude] });

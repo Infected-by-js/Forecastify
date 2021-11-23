@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import * as S from './styles';
 import { PropTypes } from 'prop-types';
 
@@ -34,34 +34,36 @@ export const Forecast = ({ getForecast, forecast }) => {
 	}, []);
 
 	return (
-		<S.Container>
-			<SearchForm getForecast={getForecast} cityName={cityName} />
+		<S.Overlay>
+			<S.Container>
+				<SearchForm getForecast={getForecast} cityName={cityName} />
 
-			<S.Main>
-				<S.MainBanner>
-					<CurrentWeather
-						temp={forecast.current.temp_c}
-						weatherDescription={forecast.current.condition.text}
-						weatherIconSrc={forecast.current.condition.icon}
+				<S.Main>
+					<S.MainBanner>
+						<CurrentWeather
+							temp={forecast.current.temp_c}
+							weatherDescription={forecast.current.condition.text}
+							weatherIconSrc={forecast.current.condition.icon}
+						/>
+						<CurrentDate
+							weekday={forecast.currentDate.weekday}
+							date={forecast.currentDate.date}
+							time={forecast.currentDate.time12h}
+						/>
+					</S.MainBanner>
+					<Summary
+						humidity={forecast.current.humidity}
+						wind={forecast.current.wind_mph}
+						sunrise={sunrise}
+						sunset={sunset}
 					/>
-					<CurrentDate
-						weekday={forecast.currentDate.weekday}
-						date={forecast.currentDate.date}
-						time={forecast.currentDate.time12h}
-					/>
-				</S.MainBanner>
-				<Summary
-					humidity={forecast.current.humidity}
-					wind={forecast.current.wind_mph}
-					sunrise={sunrise}
-					sunset={sunset}
-				/>
-			</S.Main>
+				</S.Main>
 
-			<S.Footer>
-				<UpcomingForecast forecastList={preparedForecastList} />
-			</S.Footer>
-		</S.Container>
+				<S.Footer>
+					<UpcomingForecast forecastList={preparedForecastList} />
+				</S.Footer>
+			</S.Container>
+		</S.Overlay>
 	);
 };
 

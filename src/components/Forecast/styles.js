@@ -1,5 +1,23 @@
 import styled from 'styled-components';
 
+export const Overlay = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100vw;
+	height: 100vh;
+
+	overflow: hidden;
+
+	background-color: ${({ theme }) => theme.currentTheme.backgroundColor};
+	background-image: url('${({ theme }) => theme.currentTheme.backgroundImageBig}');
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+
+	background-position: 200% -100%;
+`;
+
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
