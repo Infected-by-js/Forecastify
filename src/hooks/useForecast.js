@@ -1,27 +1,30 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import ForecastService from '../api/ForecastService';
 import { convertDateStrToObj } from '../helpers/convertDateStrToObj';
 
 export const useForecast = (changeTheme) => {
-	const [isError, setError] = useState(false);
+	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [forecast, setForecast] = useState(null);
 
 	const getForecast = async ({ city, coords }) => {
 		try {
+			setIsLoading(true);
 			const { data } = await ForecastService.getForecast({ city, coords });
 			const formattedDate = convertDateStrToObj(data.location.localtime);
 
 			changeTheme(!data.current.is_day);
 			setForecast((prevState) => ({ ...prevState, ...data, currentDate: formattedDate }));
 		} catch (e) {
-			// errorsType[e.code]
-			console.error('ERROR: ', e.message);
+			setError(e.response.data.error.message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
+
 	return {
-		isError,
+		error,
 		setError,
 		isLoading,
 		forecast,

@@ -4,14 +4,13 @@ import PropTypes from 'prop-types';
 
 import { IconRefresh } from '../../assets/icons/IconRefresh';
 
-export const SearchForm = ({ getForecast, cityName }) => {
+export const SearchForm = ({ getForecast, cityName, setError }) => {
 	const [queryName, setQueryName] = useState(cityName);
 
 	const onSubmitSearch = ({ key }) => {
 		if (key === 'Enter') {
 			if (!queryName) {
-				// setErrorMessage()
-				console.error('The search field must not be empty'.toUpperCase());
+				setError('The search field must not be empty');
 				return;
 			}
 			getForecast({ city: queryName });
@@ -46,6 +45,7 @@ export const SearchForm = ({ getForecast, cityName }) => {
 
 SearchForm.propTypes = {
 	getForecast: PropTypes.func.isRequired,
+	setError: PropTypes.func.isRequired,
 	cityName: PropTypes.string,
 };
 SearchForm.defaultProps = {

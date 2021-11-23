@@ -9,6 +9,7 @@ const themeDay = {
 	inversedBackground: 'rgba(0, 0, 0, 0.05)',
 	backgroundImageSmall: backgroundSunSmall,
 	backgroundImageBig: backgroundSunBig,
+	spinnerColor: '#ff6f44',
 };
 
 const themeNight = {
@@ -17,6 +18,7 @@ const themeNight = {
 	inversedBackground: 'rgba(255, 255, 255, 0.05)',
 	backgroundImageSmall: backgroundMoonSmall,
 	backgroundImageBig: backgroundMoonBig,
+	spinnerColor: '#8035fa',
 };
 
 export const themes = {

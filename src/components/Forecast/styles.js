@@ -12,10 +12,10 @@ export const Overlay = styled.div`
 
 	background-color: ${({ theme }) => theme.currentTheme.backgroundColor};
 	background-image: url('${({ theme }) => theme.currentTheme.backgroundImageBig}');
-	background-size: 80% 80%;
+	background-size: 600px 600px;
 	background-repeat: no-repeat;
 
-	background-position: 200% -100%;
+	background-position: top right;
 `;
 
 export const Container = styled.div`

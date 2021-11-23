@@ -8,38 +8,22 @@ import { SearchForm } from '../SearchForm';
 import { Summary } from '../Summary';
 import { UpcomingForecast } from '../UpcomingForecast';
 
-import { FORECAST_LIMIT } from '../../helpers/constants';
-import { convertDateStrToObj } from '../../helpers/convertDateStrToObj';
+import { formatForecastList } from '../../helpers/formatForecastList';
 
-export const Forecast = ({ getForecast, forecast }) => {
+export const Forecast = ({ getForecast, forecast, setError }) => {
+	const forecastList = forecast.forecast.forecastday[0].hour;
 	const cityName = `${forecast.location.name}, ${forecast.location.country}`;
 	const { sunrise, sunset } = forecast.forecast.forecastday[0].astro;
-	const forecastList = forecast.forecast.forecastday[0].hour;
+
+	const currentHours = forecast.currentDate.hours24;
 	const currentTemp = Math.round(forecast.current.temp_c);
 
-	const preparedForecastList = forecastList.reduce((acc, item) => {
-		const currentHours = +forecast.currentDate.hours24;
-		const hours = new Date(item.time).getHours();
-
-		if (acc.length < FORECAST_LIMIT) {
-			if (hours >= currentHours) {
-				const { hours12, modifier } = convertDateStrToObj(item.time);
-				const currentTime = hours === currentHours ? 'Now' : `${hours12} ${modifier}`;
-				const temp = Math.round(item.temp_c);
-
-				const newItem = { ...item, time: `${currentTime}`, temp_c: temp };
-
-				return [...acc, newItem];
-			}
-			return acc;
-		}
-		return acc;
-	}, []);
+	const formattedForecastList = formatForecastList(forecastList, currentHours);
 
 	return (
 		<S.Overlay>
 			<S.Container>
-				<SearchForm getForecast={getForecast} cityName={cityName} />
+				<SearchForm getForecast={getForecast} cityName={cityName} setError={setError} />
 
 				<S.Main>
 					<S.MainBanner>
@@ -63,7 +47,7 @@ export const Forecast = ({ getForecast, forecast }) => {
 				</S.Main>
 
 				<S.Footer>
-					<UpcomingForecast forecastList={preparedForecastList} />
+					<UpcomingForecast forecastList={formattedForecastList} />
 				</S.Footer>
 			</S.Container>
 		</S.Overlay>
@@ -72,6 +56,7 @@ export const Forecast = ({ getForecast, forecast }) => {
 
 Forecast.propTypes = {
 	getForecast: PropTypes.func.isRequired,
+	setError: PropTypes.func.isRequired,
 	forecast: PropTypes.shape({
 		forecast: PropTypes.object.isRequired,
 		current: PropTypes.object.isRequired,
