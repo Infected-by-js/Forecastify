@@ -12,7 +12,6 @@ export const App = () => {
 	const { isError, isLoading, forecast, getForecast } = useForecast(setIsNight);
 
 	useInitial(getForecast);
-
 	return (
 		<ThemeProvider theme={{ currentTheme }}>
 			{/* {isLoading && <h1>Loading...</h1>} */}

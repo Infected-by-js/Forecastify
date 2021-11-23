@@ -17,20 +17,21 @@ export const Forecast = ({ getForecast, forecast }) => {
 	const forecastList = forecast.forecast.forecastday[0].hour;
 
 	const preparedForecastList = forecastList.reduce((acc, item) => {
-		const currentHours = forecast.currentDate.hours24;
+		const currentHours = +forecast.currentDate.hours24;
 		const hours = new Date(item.time).getHours();
 
 		if (acc.length < FORECAST_LIMIT) {
-			if (currentHours < hours) {
+			if (hours >= currentHours) {
 				const { hours12, modifier } = convertDateStrToObj(item.time);
+				const currentTime = hours === currentHours ? 'Now' : `${hours12} ${modifier}`;
 				const temp = Math.round(item.temp_c);
-				const newItem = { ...item, time: `${hours12} ${modifier}`, temp_c: temp };
+
+				const newItem = { ...item, time: `${currentTime}`, temp_c: temp };
 
 				return [...acc, newItem];
 			}
 			return acc;
 		}
-		return acc;
 	}, []);
 
 	return (
