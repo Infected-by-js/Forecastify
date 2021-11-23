@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 
 import ForecastService from '../api/ForecastService';
 import { convertDateStrToObj } from '../helpers/convertDateStrToObj';

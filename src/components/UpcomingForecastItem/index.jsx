@@ -12,4 +12,9 @@ export const UpcomingForecastItem = ({ time, temp, weatherIconSrc, weatherDescri
 	);
 };
 
-UpcomingForecastItem.propTypes = {};
+UpcomingForecastItem.propTypes = {
+	time: PropTypes.string.isRequired,
+	temp: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+	weatherIconSrc: PropTypes.string.isRequired,
+	weatherDescription: PropTypes.string.isRequired,
+};

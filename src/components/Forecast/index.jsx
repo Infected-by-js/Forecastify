@@ -15,6 +15,7 @@ export const Forecast = ({ getForecast, forecast }) => {
 	const cityName = `${forecast.location.name}, ${forecast.location.country}`;
 	const { sunrise, sunset } = forecast.forecast.forecastday[0].astro;
 	const forecastList = forecast.forecast.forecastday[0].hour;
+	const currentTemp = Math.round(forecast.current.temp_c);
 
 	const preparedForecastList = forecastList.reduce((acc, item) => {
 		const currentHours = +forecast.currentDate.hours24;
@@ -32,6 +33,7 @@ export const Forecast = ({ getForecast, forecast }) => {
 			}
 			return acc;
 		}
+		return acc;
 	}, []);
 
 	return (
@@ -42,7 +44,7 @@ export const Forecast = ({ getForecast, forecast }) => {
 				<S.Main>
 					<S.MainBanner>
 						<CurrentWeather
-							temp={forecast.current.temp_c}
+							temp={currentTemp}
 							weatherDescription={forecast.current.condition.text}
 							weatherIconSrc={forecast.current.condition.icon}
 						/>
