@@ -12,11 +12,18 @@ export const Temp = styled.span`
 	font-size: 90px;
 	line-height: 1;
 	font-weight: 300;
+
+	color: ${({ theme }) => theme.currentTheme.color};
+
+	user-select: none;
 `;
 export const Unit = styled.span`
 	font-weight: 300;
 	font-size: 24px;
 	line-height: 1;
+
+	color: ${({ theme }) => theme.currentTheme.color};
+
 	vertical-align: top;
 `;
 
@@ -28,15 +35,15 @@ export const MainWeatherWrapp = styled.div`
 	padding: 5px;
 	border-top: 2px dashed ${({ theme }) => theme.currentTheme.color};
 
-	user-select: none;
-
 	overflow: hidden;
 `;
 
 export const Weather = styled.span`
-	margin-right: 10px;
+	margin-right: 5px;
 
 	line-height: 1;
-	font-size: 28px;
+	font-size: 24px;
 	font-weight: 300;
+
+	color: ${({ theme }) => theme.currentTheme.color};
 `;

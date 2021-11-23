@@ -8,6 +8,7 @@ import { Summary } from '../Summary';
 
 export const Forecast = ({ getForecast, forecast }) => {
 	const cityName = `${forecast.location.name}, ${forecast.location.country}`;
+	const { sunrise, sunset } = forecast.forecast.forecastday[0].astro;
 
 	return (
 		<S.Container>
@@ -17,15 +18,26 @@ export const Forecast = ({ getForecast, forecast }) => {
 				<S.MainBanner>
 					<CurrentWeather
 						temp={forecast.current.temp_c}
-						weatherText={forecast.current.condition.text}
+						weatherDescription={forecast.current.condition.text}
 						weatherIcon={forecast.current.condition.icon}
 					/>
-					<CurrentDate />
+					<CurrentDate
+						weekday={forecast.currentDate.weekday}
+						date={forecast.currentDate.date}
+						time={forecast.currentDate.time12h}
+					/>
 				</S.MainBanner>
-				<Summary />
+				<Summary
+					humidity={forecast.current.humidity}
+					wind={forecast.current.wind_mph}
+					sunrise={sunrise}
+					sunset={sunset}
+				/>
 			</S.Main>
 
-			<S.Footer>{/* <UpcomingForecast /> */}</S.Footer>
+			<S.Footer>
+				<UpcomingForecast />
+			</S.Footer>
 		</S.Container>
 	);
 };

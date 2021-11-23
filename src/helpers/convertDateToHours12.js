@@ -1,12 +1,14 @@
-export const convertDateToHours12 = (date) => {
-	const options = {
-		hour: '2-digit',
-		hour12: true,
-	};
-	return new Date(date).toLocaleString('en-EN', options);
+export const convertHours12To24 = (hours12, modifier) => {
+	let convertedHours = hours12;
+	if (modifier === 'PM' && convertedHours < 12) convertedHours = +convertedHours + 12;
+	if (modifier === 'AM' && convertedHours === 12) convertedHours = +convertedHours - 12;
+
+	let hours24 = String(convertedHours);
+
+	return hours24;
 };
 
-export const convertTimestampToDate = (dateString) => {
+export const formatDateToLocale = (currentTime) => {
 	const dateLocaleOptions = {
 		weekday: 'long',
 		year: 'numeric',
@@ -16,17 +18,13 @@ export const convertTimestampToDate = (dateString) => {
 		minute: '2-digit',
 		hour12: true,
 	};
-	const localeDate = new Date(dateString).toLocaleString('en-US', dateLocaleOptions);
+	const localeDate = new Date(currentTime).toLocaleString('en-US', dateLocaleOptions);
+
 	const [weekday, monthAndDay, year, fullTime] = localeDate.split(', ');
 	const [month, day] = monthAndDay.split(' ');
 	const [time, modifier] = fullTime.split(' ');
 	const [hours12, minutes] = time.split(':');
-
-	let convertedHours = hours12;
-	if (modifier === 'PM' && convertedHours < 12) convertedHours = +convertedHours + 12;
-	if (modifier === 'AM' && convertedHours === 12) convertedHours = +convertedHours - 12;
-
-	let hours24 = convertedHours.toString();
+	const hours24 = convertHours12To24(hours12, modifier);
 
 	return {
 		weekday,
@@ -40,6 +38,6 @@ export const convertTimestampToDate = (dateString) => {
 		date: `${day} ${month} ${year}`,
 		time12h: `${hours12}:${minutes} ${modifier}`,
 		time24h: `${hours24}:${minutes}`,
-		timestamp: Date.parse(dateString),
+		timestamp: Date.parse(currentTime),
 	};
 };

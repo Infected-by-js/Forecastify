@@ -6,7 +6,7 @@ import { useForecast } from './hooks/useForecast';
 import { useInitial } from './hooks/useInitial';
 export const App = () => {
 	const { currentTheme, setIsNight } = useTheme();
-	const { isError, isLoading, forecast, getForecast } = useForecast();
+	const { isError, isLoading, forecast, getForecast } = useForecast(setIsNight);
 
 	useInitial(getForecast);
 
@@ -20,9 +20,7 @@ export const App = () => {
 				{/* isError && <Error/> */}
 				{forecast && (
 					<Overlay>
-						<h1>
-							<Forecast forecast={forecast} getForecast={getForecast} />
-						</h1>
+						<Forecast forecast={forecast} getForecast={getForecast} />
 					</Overlay>
 				)}
 			</>

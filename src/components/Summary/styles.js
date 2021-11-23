@@ -28,10 +28,17 @@ export const IconWrapp = styled.span`
 	svg {
 		width: 18px;
 		height: 18px;
+
+		g {
+			stroke: ${({ theme }) => theme.currentTheme.color};
+		}
 	}
 `;
-export const ValueWrapp = styled.span`
+export const Value = styled.span`
 	font-size: 16px;
 	font-weight: 300;
+
+	color: ${({ theme }) => theme.currentTheme.color};
+
 	user-select: none;
 `;

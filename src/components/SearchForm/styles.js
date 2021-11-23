@@ -21,6 +21,7 @@ export const Input = styled.input.attrs({
 	type: 'text',
 	placeholder: 'Type city name here...',
 })`
+	color: ${({ theme }) => theme.currentTheme.color};
 	margin-left: -10px;
 	padding-left: 5px;
 
@@ -44,6 +45,10 @@ export const RefreshButton = styled.button`
 	align-items: center;
 	justify-content: center;
 	transition: 0.2s ease-in-out;
+
+	g {
+		fill: ${({ theme }) => theme.currentTheme.color};
+	}
 
 	&:hover,
 	&:focus-visible {

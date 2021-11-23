@@ -33,12 +33,12 @@ export const MainBanner = styled.div`
 	margin-bottom: 40px;
 
 	& div:first-child {
-		margin-right: 50px;
+		margin-right: 20px;
 	}
 `;
 
 export const Footer = styled.div`
 	padding: 10px 10px;
 	border-radius: 0 0 10px 10px;
-	background-color: ${({ theme }) => theme.currentTheme.background};
+	background-color: ${({ theme }) => theme.currentTheme.footerBackground};
 `;
