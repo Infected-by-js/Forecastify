@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const MainTempWrapp = styled.div`
+	margin-bottom: 10px;
+
 	display: flex;
 	justify-content: center;
-	margin-bottom: 10px;
 
 	user-select: none;
 `;
@@ -28,14 +29,22 @@ export const Unit = styled.span`
 `;
 
 export const MainWeatherWrapp = styled.div`
+	padding: 5px 0 5px 15px;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 
-	padding: 5px;
-	border-top: 2px dashed ${({ theme }) => theme.currentTheme.color};
-
 	overflow: hidden;
+	border: 2px solid transparent;
+	border-radius: 10px;
+
+	background-color: ${({ theme }) => theme.currentTheme.inversedBackground};
+
+	transition: border-color 0.15s ease-in-out;
+	&:hover {
+		border-color: ${({ theme }) => theme.currentTheme.color};
+	}
 `;
 
 export const Weather = styled.span`

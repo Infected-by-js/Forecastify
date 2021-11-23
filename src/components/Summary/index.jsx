@@ -22,4 +22,6 @@ export const Summary = ({ humidity, wind, sunrise, sunset }) => {
 Summary.propTypes = {
 	humidity: PropTypes.number.isRequired,
 	wind: PropTypes.number.isRequired,
+	sunrise: PropTypes.string.isRequired,
+	sunset: PropTypes.string.isRequired,
 };

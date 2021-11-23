@@ -18,19 +18,20 @@ export const Container = styled.div`
 	box-shadow: 6px 6px 40px -3px rgba(0, 0, 0, 0.25); ;
 `;
 
-export const Main = styled.main`
+export const Main = styled.div`
+	padding: 0 30px;
+
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-
-	padding: 0 30px;
 `;
 
 export const MainBanner = styled.div`
+	margin-bottom: 40px;
+
 	display: flex;
 	justify-content: space-between;
 	flex: 1;
-	margin-bottom: 40px;
 
 	& div:first-child {
 		margin-right: 20px;
@@ -39,6 +40,7 @@ export const MainBanner = styled.div`
 
 export const Footer = styled.div`
 	padding: 10px 10px;
+
 	border-radius: 0 0 10px 10px;
-	background-color: ${({ theme }) => theme.currentTheme.footerBackground};
+	background-color: ${({ theme }) => theme.currentTheme.inversedBackground};
 `;

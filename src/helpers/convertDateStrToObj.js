@@ -1,14 +1,4 @@
-export const convertHours12To24 = (hours12, modifier) => {
-	let convertedHours = hours12;
-	if (modifier === 'PM' && convertedHours < 12) convertedHours = +convertedHours + 12;
-	if (modifier === 'AM' && convertedHours === 12) convertedHours = +convertedHours - 12;
-
-	let hours24 = String(convertedHours);
-
-	return hours24;
-};
-
-export const formatDateToLocale = (currentTime) => {
+export const convertDateStrToObj = (currentTime) => {
 	const dateLocaleOptions = {
 		weekday: 'long',
 		year: 'numeric',
@@ -24,7 +14,12 @@ export const formatDateToLocale = (currentTime) => {
 	const [month, day] = monthAndDay.split(' ');
 	const [time, modifier] = fullTime.split(' ');
 	const [hours12, minutes] = time.split(':');
-	const hours24 = convertHours12To24(hours12, modifier);
+
+	let convertedHours = hours12;
+	if (modifier === 'PM' && convertedHours < 12) convertedHours = +convertedHours + 12;
+	if (modifier === 'AM' && convertedHours === 12) convertedHours = +convertedHours - 12;
+
+	let hours24 = String(convertedHours);
 
 	return {
 		weekday,

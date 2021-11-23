@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { useTheme } from './hooks/useTheme';
 import { Forecast } from './components/Forecast/';
+
+import { useTheme } from './hooks/useTheme';
 import { useForecast } from './hooks/useForecast';
 import { useInitial } from './hooks/useInitial';
+
 export const App = () => {
 	const { currentTheme, setIsNight } = useTheme();
 	const { isError, isLoading, forecast, getForecast } = useForecast(setIsNight);
@@ -11,7 +13,6 @@ export const App = () => {
 	useInitial(getForecast);
 
 	console.log('RENDER APP');
-	console.log(forecast);
 
 	return (
 		<ThemeProvider theme={{ currentTheme, setIsNight }}>

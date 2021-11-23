@@ -17,7 +17,12 @@ export const SummaryItem = ({ icon: Icon, value, unit }) => {
 
 SummaryItem.propTypes = {
 	icon: PropTypes.elementType,
-	iconPos: PropTypes.string,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	unit: PropTypes.string,
+};
+
+SummaryItem.defaultProps = {
+	icon: <span>icon</span>,
+	value: '',
+	unit: '',
 };

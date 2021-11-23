@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles.js';
 import PropTypes from 'prop-types';
-import { IconTime } from '../../assets/icons/IconTime';
+import { IconTime } from '../../assets/icons/';
 
 export const CurrentDate = ({ weekday, date, time }) => {
 	return (

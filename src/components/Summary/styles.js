@@ -1,10 +1,11 @@
 import styled from 'styled-components/macro';
 
 export const Wrapp = styled.div`
+	margin-bottom: 15px;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 15px;
 `;
 
 export const Col = styled.div`

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { IconRefresh } from '../../assets/icons/IconRefresh';
 
-export const SearchForm = ({ getForecast, cityName = '' }) => {
+export const SearchForm = ({ getForecast, cityName }) => {
 	const [queryName, setQueryName] = useState(cityName);
 
 	const onSubmitSearch = ({ key }) => {
@@ -44,4 +44,10 @@ export const SearchForm = ({ getForecast, cityName = '' }) => {
 	);
 };
 
-SearchForm.propTypes = {};
+SearchForm.propTypes = {
+	getForecast: PropTypes.func.isRequired,
+	cityName: PropTypes.string,
+};
+SearchForm.defaultProps = {
+	cityName: '',
+};

@@ -6,7 +6,7 @@ import backgroundSunBig from '../assets/Background-sun-b.svg';
 const themeDay = {
 	color: '#000',
 	backgroundColor: '#fff',
-	footerBackground: 'rgba(0, 0, 0, 0.15)',
+	inversedBackground: 'rgba(0, 0, 0, 0.05)',
 	backgroundImageSmall: backgroundSunSmall,
 	backgroundImageBig: backgroundSunBig,
 };
@@ -14,7 +14,7 @@ const themeDay = {
 const themeNight = {
 	color: '#fff',
 	backgroundColor: '#383838',
-	footerBackground: 'rgba(255, 255, 255, 0.15)',
+	inversedBackground: 'rgba(255, 255, 255, 0.05)',
 	backgroundImageSmall: backgroundMoonSmall,
 	backgroundImageBig: backgroundMoonBig,
 };
