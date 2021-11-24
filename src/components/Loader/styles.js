@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
 
 const spin = keyframes`
@@ -6,8 +7,7 @@ const spin = keyframes`
 
 `;
 
-export const LoaderWrapp = styled.div`
-	position: fixed;
+export const LoaderWrapp = styled(motion.div)`
 	top: 0;
 	left: 0;
 	right: 0;
@@ -15,7 +15,7 @@ export const LoaderWrapp = styled.div`
 	background-color: rgba(0, 0, 0, 0.3);
 `;
 
-export const Loader = styled.div`
+export const Loader = styled(motion.div)`
 	position: absolute;
 	top: 50%;
 	left: 50%;

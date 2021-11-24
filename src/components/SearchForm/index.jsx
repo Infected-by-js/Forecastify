@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import * as S from './styles.js';
 import PropTypes from 'prop-types';
 
-import { IconRefresh } from '../../assets/icons/IconRefresh';
-
 export const SearchForm = ({ loadForecast, cityName, setError }) => {
 	const [queryName, setQueryName] = useState(cityName);
 
@@ -23,26 +21,20 @@ export const SearchForm = ({ loadForecast, cityName, setError }) => {
 		setQueryName(cityName);
 	};
 
-	const onRefreshHandler = () => {
-		if (queryName === cityName) return;
-
-		loadForecast({ city: queryName });
+	const onClearInput = () => {
+		setQueryName('');
 	};
 
 	return (
-		<S.SearchForm>
+		<S.SearchForm onBlur={onBlurHandler}>
 			<S.Label>
 				<S.Input
 					value={queryName}
 					onChange={({ target }) => setQueryName(target.value)}
 					onKeyDown={onSubmitSearch}
-					onBlur={onBlurHandler}
 				/>
 			</S.Label>
-
-			<S.RefreshButton onClick={onRefreshHandler}>
-				<IconRefresh />
-			</S.RefreshButton>
+			<S.Close onClick={onClearInput} />
 		</S.SearchForm>
 	);
 };

@@ -14,8 +14,8 @@ export const Overlay = styled.div`
 	background-image: url('${({ theme }) => theme.currentTheme.backgroundImageBig}');
 	background-size: 600px 600px;
 	background-repeat: no-repeat;
-
 	background-position: top right;
+	transition: 0.3s ease-in-out;
 `;
 
 export const Container = styled.div`
@@ -30,6 +30,7 @@ export const Container = styled.div`
 	background-size: 30%;
 	background-repeat: no-repeat;
 	background-position: 70% 10%;
+	transition: 0.3s ease-in-out;
 
 	border-radius: 10px;
 

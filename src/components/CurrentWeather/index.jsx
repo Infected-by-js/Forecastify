@@ -1,19 +1,30 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import * as S from './styles.js';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 export const CurrentWeather = ({ temp, weatherDescription, weatherIconSrc }) => {
 	return (
-		<div>
-			<S.MainTempWrapp>
+		<motion.div layout>
+			<S.MainTempWrapp
+				as={motion.div}
+				initial={{ opacity: 0, scale: 0 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ delay: 1, duration: 0.5 }}
+			>
 				<S.Temp>{temp}</S.Temp>
 				<S.Unit>˚C</S.Unit>
 			</S.MainTempWrapp>
-			<S.MainWeatherWrapp>
+			<S.MainWeatherWrapp
+				as={motion.div}
+				initial={{ opacity: 0, scale: 0 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ delay: 1, duration: 0.5 }}
+			>
 				<S.Weather>{weatherDescription}</S.Weather>
-				<img src={weatherIconSrc} alt={weatherDescription} />
+				<motion.img src={weatherIconSrc} alt={weatherDescription} />
 			</S.MainWeatherWrapp>
-		</div>
+		</motion.div>
 	);
 };
 

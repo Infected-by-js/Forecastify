@@ -28,7 +28,7 @@ export const OutClickOverlay = styled.div`
 
 export const ErrorMessage = styled.span`
 	position: fixed;
-	top: 100px;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 
@@ -38,13 +38,13 @@ export const ErrorMessage = styled.span`
 	align-items: center;
 	justify-content: center;
 
-	width: auto;
+	width: fit-content;
 	height: 50px;
 
-	color: ${({ theme }) => theme.currentTheme.color};
+	color: #000;
 	font-weight: 800;
 	font-size: 22px;
-	background-color: ${({ theme }) => theme.currentTheme.inversedBackground};
+	background-color: #fff;
 	border-radius: 10px;
 
 	z-index: 2;
@@ -66,11 +66,12 @@ export const Close = styled.span`
 	&:before,
 	&:after {
 		position: absolute;
-		left: 15px;
+		top: 10px;
+		left: 10px;
 		content: ' ';
-		height: 25px;
+		height: 15px;
 		width: 2px;
-		background-color: ${({ theme }) => theme.currentTheme.color};
+		background-color: #000;
 	}
 	&:before {
 		transform: rotate(45deg);

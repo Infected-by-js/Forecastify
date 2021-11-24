@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { PropTypes } from 'prop-types';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { CurrentDate } from '../CurrentDate';
 import { CurrentWeather } from '../CurrentWeather';
@@ -10,7 +11,7 @@ import { UpcomingForecast } from '../UpcomingForecast';
 
 import { formatForecastList } from '../../helpers/formatForecastList';
 
-export const Forecast = ({ loadForecast, forecast, setError }) => {
+export const Forecast = React.memo(({ loadForecast, forecast, setError }) => {
 	const forecastList = forecast.forecast.forecastday[0].hour;
 	const cityName = `${forecast.location.name}, ${forecast.location.country}`;
 	const { sunrise, sunset } = forecast.forecast.forecastday[0].astro;
@@ -21,38 +22,45 @@ export const Forecast = ({ loadForecast, forecast, setError }) => {
 	const formattedForecastList = formatForecastList(forecastList, currentHours);
 
 	return (
-		<S.Overlay>
-			<S.Container>
-				<SearchForm loadForecast={loadForecast} cityName={cityName} setError={setError} />
+		<AnimatePresence>
+			<S.Overlay
+				as={motion.div}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.5 }}
+			>
+				<S.Container>
+					<SearchForm loadForecast={loadForecast} cityName={cityName} setError={setError} />
 
-				<S.Main>
-					<S.MainBanner>
-						<CurrentWeather
-							temp={currentTemp}
-							weatherDescription={forecast.current.condition.text}
-							weatherIconSrc={forecast.current.condition.icon}
+					<S.Main>
+						<S.MainBanner>
+							<CurrentWeather
+								temp={currentTemp}
+								weatherDescription={forecast.current.condition.text}
+								weatherIconSrc={forecast.current.condition.icon}
+							/>
+							<CurrentDate
+								weekday={forecast.currentDate.weekday}
+								date={forecast.currentDate.date}
+								time={forecast.currentDate.time12h}
+							/>
+						</S.MainBanner>
+						<Summary
+							humidity={forecast.current.humidity}
+							wind={forecast.current.wind_mph}
+							sunrise={sunrise}
+							sunset={sunset}
 						/>
-						<CurrentDate
-							weekday={forecast.currentDate.weekday}
-							date={forecast.currentDate.date}
-							time={forecast.currentDate.time12h}
-						/>
-					</S.MainBanner>
-					<Summary
-						humidity={forecast.current.humidity}
-						wind={forecast.current.wind_mph}
-						sunrise={sunrise}
-						sunset={sunset}
-					/>
-				</S.Main>
+					</S.Main>
 
-				<S.Footer>
-					<UpcomingForecast forecastList={formattedForecastList} />
-				</S.Footer>
-			</S.Container>
-		</S.Overlay>
+					<S.Footer>
+						<UpcomingForecast forecastList={formattedForecastList} />
+					</S.Footer>
+				</S.Container>
+			</S.Overlay>
+		</AnimatePresence>
 	);
-};
+});
 
 Forecast.propTypes = {
 	loadForecast: PropTypes.func.isRequired,

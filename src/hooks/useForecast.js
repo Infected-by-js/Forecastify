@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
 
 import ForecastService from '../api/ForecastService';
 import { convertDateStrToObj } from '../helpers/convertDateStrToObj';
@@ -13,10 +12,11 @@ export const useForecast = (changeTheme) => {
 		try {
 			setIsLoading(true);
 			const { data } = await ForecastService.getForecast({ city, coords });
+
 			const formattedDate = convertDateStrToObj(data.location.localtime);
 
 			changeTheme(!data.current.is_day);
-			setForecast((prevState) => ({ ...prevState, ...data, currentDate: formattedDate }));
+			setForecast({ ...data, currentDate: formattedDate });
 		} catch (e) {
 			setError(e.response.data.error.message);
 		} finally {

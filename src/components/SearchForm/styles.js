@@ -40,22 +40,35 @@ export const Input = styled.input.attrs({
 	}
 `;
 
-export const RefreshButton = styled.button`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: 0.2s ease-in-out;
+export const Close = styled.span`
+	& {
+		width: 20px;
+		height: 20px;
+		position: relative;
+		cursor: pointer;
+		opacity: 0.3;
+		transition: opacity 0.15s ease-in-out;
 
-	g {
-		fill: ${({ theme }) => theme.currentTheme.color};
+		&:hover {
+			opacity: 1;
+		}
 	}
 
-	&:hover,
-	&:focus-visible {
-		transform: rotate(20deg);
+	&:after {
+		content: '';
+		height: 100%;
+		border-left: 2px solid ${({ theme }) => theme.currentTheme.color};
+		position: absolute;
+		transform: rotate(45deg);
+		left: 50%;
+	}
 
-		g {
-			fill: ${({ theme }) => theme.currentTheme.color};
-		}
+	&:before {
+		content: '';
+		height: 100%;
+		border-left: 2px solid ${({ theme }) => theme.currentTheme.color};
+		position: absolute;
+		transform: rotate(-45deg);
+		left: 50%;
 	}
 `;

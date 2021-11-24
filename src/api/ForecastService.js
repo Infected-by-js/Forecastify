@@ -5,8 +5,6 @@ export default class ForecastService {
 	static #PATH = 'https://api.weatherapi.com/v1/forecast.json';
 
 	static async getForecast({ city = '', coords = [] }) {
-		console.log('FETCHING FORECAST...');
-
 		const response = await axios.get(ForecastService.#PATH, {
 			params: {
 				key: ForecastService.#API_KEY,
