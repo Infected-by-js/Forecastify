@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import * as S from './styles.js';
 import PropTypes from 'prop-types';
 

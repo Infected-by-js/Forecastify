@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react/cjs/react.development';
 
 import ForecastService from '../api/ForecastService';
 import { convertDateStrToObj } from '../helpers/convertDateStrToObj';
@@ -8,7 +9,7 @@ export const useForecast = (changeTheme) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [forecast, setForecast] = useState(null);
 
-	const getForecast = async ({ city, coords }) => {
+	const loadForecast = async ({ city, coords }) => {
 		try {
 			setIsLoading(true);
 			const { data } = await ForecastService.getForecast({ city, coords });
@@ -28,6 +29,6 @@ export const useForecast = (changeTheme) => {
 		setError,
 		isLoading,
 		forecast,
-		getForecast,
+		loadForecast,
 	};
 };

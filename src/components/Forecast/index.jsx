@@ -10,7 +10,7 @@ import { UpcomingForecast } from '../UpcomingForecast';
 
 import { formatForecastList } from '../../helpers/formatForecastList';
 
-export const Forecast = ({ getForecast, forecast, setError }) => {
+export const Forecast = ({ loadForecast, forecast, setError }) => {
 	const forecastList = forecast.forecast.forecastday[0].hour;
 	const cityName = `${forecast.location.name}, ${forecast.location.country}`;
 	const { sunrise, sunset } = forecast.forecast.forecastday[0].astro;
@@ -23,7 +23,7 @@ export const Forecast = ({ getForecast, forecast, setError }) => {
 	return (
 		<S.Overlay>
 			<S.Container>
-				<SearchForm getForecast={getForecast} cityName={cityName} setError={setError} />
+				<SearchForm loadForecast={loadForecast} cityName={cityName} setError={setError} />
 
 				<S.Main>
 					<S.MainBanner>
@@ -55,7 +55,7 @@ export const Forecast = ({ getForecast, forecast, setError }) => {
 };
 
 Forecast.propTypes = {
-	getForecast: PropTypes.func.isRequired,
+	loadForecast: PropTypes.func.isRequired,
 	setError: PropTypes.func.isRequired,
 	forecast: PropTypes.shape({
 		forecast: PropTypes.object.isRequired,
