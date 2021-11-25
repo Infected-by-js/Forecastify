@@ -8,7 +8,10 @@ export const convertDateStrToObj = (currentTime) => {
 		minute: '2-digit',
 		hour12: true,
 	};
-	const localeDate = new Date(currentTime).toLocaleString('en-US', dateLocaleOptions);
+	const localeDate = new Date(currentTime.replace(/ /g, 'T')).toLocaleString(
+		'en-US',
+		dateLocaleOptions
+	);
 
 	const [weekday, monthAndDay, year, fullTime] = localeDate.split(', ');
 	const [month, day] = monthAndDay.split(' ');

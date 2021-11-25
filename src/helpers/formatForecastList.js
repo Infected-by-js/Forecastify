@@ -3,7 +3,7 @@ import { convertDateStrToObj } from './convertDateStrToObj';
 
 export const formatForecastList = (forecast, currentHours) => {
 	return forecast.reduce((acc, item) => {
-		const hours = new Date(item.time).getHours();
+		const hours = new Date(item.time.replace(/ /g, 'T')).getHours();
 
 		if (acc.length < FORECAST_LIMIT) {
 			if (hours >= currentHours) {
