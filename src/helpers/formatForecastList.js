@@ -8,7 +8,8 @@ export const formatForecastList = (forecast, currentHours) => {
 		if (acc.length < FORECAST_LIMIT) {
 			if (hours >= currentHours) {
 				const { hours12, modifier } = convertDateStrToObj(item.time);
-				const currentTime = hours === currentHours ? 'Now' : `${hours12} ${modifier}`;
+				const currentTime =
+					Number(hours) === Number(currentHours) ? 'Now' : `${hours12} ${modifier}`;
 				const temp = Math.round(item.temp_c);
 
 				const newItem = { ...item, time: `${currentTime}`, temp_c: temp };
