@@ -12,6 +12,7 @@ As Third-Party API for the app is **Weather API**
 ## Demo
 
 - [Github Pages](https://infected-by-js.github.io/Forecastify/)
+- [Vercel](https://forecastify.vercel.app/)
 
 ## :fire: Packages
 

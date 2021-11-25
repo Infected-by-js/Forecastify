@@ -20,7 +20,7 @@ export const Overlay = styled.div`
 
 	@media ${DEVICE_SIZE.mobile} {
 		overflow-y: auto;
-		height: auto;
+		height: 100%;
 	}
 
 	@media ${DEVICE_SIZE.tablet} {
@@ -35,7 +35,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	min-width: 500px;
+	min-width: 540px;
 	min-height: 440px;
 
 	background-color: ${({ theme }) => theme.currentTheme.backgroundColor};
