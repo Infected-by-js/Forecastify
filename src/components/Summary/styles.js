@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { DEVICE_SIZE } from '../../helpers/constants';
 
 export const Wrapp = styled.div`
 	margin-bottom: 15px;
@@ -6,6 +7,24 @@ export const Wrapp = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	@media ${DEVICE_SIZE.mobile} {
+		flex-direction: column;
+		align-items: stretch;
+
+		div:first-of-type {
+			margin-bottom: 20px;
+		}
+	}
+
+	@media ${DEVICE_SIZE.tablet} {
+		flex-direction: column;
+		align-items: stretch;
+
+		div:first-of-type {
+			margin-bottom: 10px;
+		}
+	}
 `;
 
 export const Col = styled.div`
@@ -15,6 +34,13 @@ export const Col = styled.div`
 
 	div:first-of-type {
 		margin-right: 20px;
+	}
+
+	@media ${DEVICE_SIZE.mobile} {
+		div:first-of-type {
+			margin-right: 0;
+			margin-bottom: 0;
+		}
 	}
 `;
 export const InfoItem = styled.div`

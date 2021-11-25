@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE_SIZE } from '../../helpers/constants';
 
 export const UpcomingForecastItem = styled.li`
 	padding: 5px;
@@ -28,6 +29,10 @@ export const Title = styled.h3`
 export const Icon = styled.img`
 	width: 50px;
 	margin-bottom: 5px;
+
+	@media ${DEVICE_SIZE.mobile} {
+		width: 80px;
+	}
 `;
 
 export const Temp = styled.span`
@@ -36,4 +41,8 @@ export const Temp = styled.span`
 	line-height: 1;
 
 	color: ${({ theme }) => theme.currentTheme.color};
+
+	@media ${DEVICE_SIZE.mobile} {
+		font-size: 20px;
+	}
 `;

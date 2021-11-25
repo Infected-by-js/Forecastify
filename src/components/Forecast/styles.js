@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE_SIZE } from '../../helpers/constants';
 
 export const Overlay = styled.div`
 	display: flex;
@@ -16,13 +17,25 @@ export const Overlay = styled.div`
 	background-repeat: no-repeat;
 	background-position: top right;
 	transition: 0.3s ease-in-out;
+
+	@media ${DEVICE_SIZE.mobile} {
+		overflow-y: auto;
+		height: auto;
+	}
+
+	@media ${DEVICE_SIZE.tablet} {
+		overflow: hidden;
+		height: 100vh;
+	} ;
 `;
 
 export const Container = styled.div`
+	margin: 20px;
+
 	display: flex;
 	flex-direction: column;
 
-	min-width: 521px;
+	min-width: 320px;
 	min-height: 440px;
 
 	background-color: ${({ theme }) => theme.currentTheme.backgroundColor};
@@ -34,7 +47,15 @@ export const Container = styled.div`
 
 	border-radius: 10px;
 
-	box-shadow: 6px 6px 40px -3px rgba(0, 0, 0, 0.25); ;
+	box-shadow: 6px 6px 40px -3px rgba(0, 0, 0, 0.25);
+
+	@media ${DEVICE_SIZE.mobile} {
+		min-width: 300px;
+	}
+
+	@media ${DEVICE_SIZE.tablet} {
+		min-width: 400px;
+	} ;
 `;
 
 export const Main = styled.div`
@@ -50,11 +71,20 @@ export const MainBanner = styled.div`
 
 	display: flex;
 	justify-content: space-between;
+	flex-direction: row;
 	flex: 1;
 
 	& div:first-child {
 		margin-right: 20px;
 	}
+
+	@media ${DEVICE_SIZE.mobile} {
+		flex-direction: column-reverse;
+	}
+
+	@media ${DEVICE_SIZE.tablet} {
+		flex-direction: row;
+	} ;
 `;
 
 export const Footer = styled.div`

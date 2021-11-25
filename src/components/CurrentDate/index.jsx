@@ -7,7 +7,8 @@ import { swipeRightVariants } from '../../helpers/motionUtils.js';
 
 export const CurrentDate = ({ weekday, date, time }) => {
 	return (
-		<motion.div
+		<S.DateWrapp
+			as={motion.div}
 			initial={swipeRightVariants.hidden}
 			animate={swipeRightVariants.visible}
 			transition={swipeRightVariants.transition}
@@ -19,7 +20,7 @@ export const CurrentDate = ({ weekday, date, time }) => {
 				{time}
 				<IconTime />
 			</S.Time>
-		</motion.div>
+		</S.DateWrapp>
 	);
 };
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE_SIZE } from '../../helpers/constants';
 
 export const SearchForm = styled.div`
 	display: flex;
@@ -7,6 +8,15 @@ export const SearchForm = styled.div`
 
 	margin-bottom: 30px;
 	padding: 30px 30px 0;
+
+	@media ${DEVICE_SIZE.mobile} {
+		padding: 20px 20px 0;
+		margin-bottom: 10px;
+	}
+	@media ${DEVICE_SIZE.mobile} {
+		padding: 20px 20px 0;
+		margin-bottom: 10px;
+	}
 `;
 
 export const Label = styled.label`
@@ -28,6 +38,7 @@ export const Input = styled.input.attrs({
 
 	font-size: 26px;
 	font-weight: 300;
+	text-align: left;
 
 	border: none;
 	border-left: 2px solid transparent;
@@ -38,6 +49,20 @@ export const Input = styled.input.attrs({
 	&:hover,
 	&:focus {
 		border-color: ${({ theme }) => theme.currentTheme.color};
+	}
+
+	@media ${DEVICE_SIZE.mobile} {
+		padding-bottom: 5px;
+		font-size: 1.5rem;
+		margin: 0;
+		text-align: center;
+		border-left: none;
+		border-bottom: 2px solid transparent;
+
+		&:hover,
+		&:focus {
+			border-color: ${({ theme }) => theme.currentTheme.color};
+		}
 	}
 `;
 
@@ -71,5 +96,9 @@ export const Close = styled.span`
 		position: absolute;
 		transform: rotate(-45deg);
 		left: 50%;
+	}
+
+	@media ${DEVICE_SIZE.mobile} {
+		display: none;
 	}
 `;
