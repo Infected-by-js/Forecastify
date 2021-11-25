@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { Forecast } from './components/Forecast/';
@@ -8,7 +8,6 @@ import { useTheme } from './hooks/useTheme';
 import { useForecast } from './hooks/useForecast';
 
 import { Loader } from './components/Loader';
-import { useEffect } from 'react/cjs/react.development';
 import { requestUserGeolocation } from './helpers/requestUserGeolocation';
 
 export const App = () => {
