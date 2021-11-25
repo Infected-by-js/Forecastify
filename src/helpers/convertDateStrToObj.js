@@ -3,15 +3,14 @@ export const convertDateStrToObj = (currentTime) => {
 		weekday: 'long',
 		year: 'numeric',
 		month: 'long',
-		day: 'numeric',
+		day: '2-digit',
 		hour: '2-digit',
 		minute: '2-digit',
 		hour12: true,
 	};
-	const localeDate = new Date(currentTime.replace(/ /g, 'T')).toLocaleString(
-		'en-US',
-		dateLocaleOptions
-	);
+	// polifill for safari browser below
+	const replacedTime = currentTime.replace(/-/g, '/');
+	const localeDate = new Date(replacedTime).toLocaleString('en-US', dateLocaleOptions);
 
 	const [weekday, monthAndDay, year, fullTime] = localeDate.split(', ');
 	const [month, day] = monthAndDay.split(' ');
@@ -36,6 +35,5 @@ export const convertDateStrToObj = (currentTime) => {
 		date: `${day} ${month} ${year}`,
 		time12h: `${hours12}:${minutes} ${modifier}`,
 		time24h: `${hours24}:${minutes}`,
-		timestamp: Date.parse(currentTime),
 	};
 };

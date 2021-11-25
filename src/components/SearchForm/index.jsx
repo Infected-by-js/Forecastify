@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { scaleInVariants, swipeTopVariants } from '../../helpers/motionUtils.js';
 
-export const SearchForm = ({ loadForecast, cityName, setError }) => {
+export const SearchForm = ({ loadForecast, cityName }) => {
 	const [queryName, setQueryName] = useState(cityName);
 
-	const onSubmitSearch = ({ key }) => {
+	const onSubmitSearch = async ({ key }) => {
 		if (key === 'Enter') {
 			if (queryName === cityName || !queryName) return;
 
@@ -49,7 +49,6 @@ export const SearchForm = ({ loadForecast, cityName, setError }) => {
 
 SearchForm.propTypes = {
 	loadForecast: PropTypes.func.isRequired,
-	setError: PropTypes.func.isRequired,
 	cityName: PropTypes.string,
 };
 SearchForm.defaultProps = {

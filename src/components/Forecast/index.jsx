@@ -31,7 +31,7 @@ export const Forecast = React.memo(({ loadForecast, forecast, setError }) => {
 				transition={fadeInVariants.transition}
 			>
 				<S.Container>
-					<SearchForm loadForecast={loadForecast} cityName={cityName} setError={setError} />
+					<SearchForm loadForecast={loadForecast} cityName={cityName} />
 
 					<S.Main>
 						<S.MainBanner>
