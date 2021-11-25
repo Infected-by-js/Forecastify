@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class ForecastService {
-	static #API_KEY = 'b747702425614679a3981747212211';
+	static #API_KEY = process.env.REACT_APP_API_KEY;
 	static #PATH = 'https://api.weatherapi.com/v1/forecast.json';
 
 	static async getForecast({ city = '', coords = [] }) {
