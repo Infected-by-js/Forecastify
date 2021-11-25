@@ -1,7 +1,8 @@
 import React from 'react';
 import * as S from './styles.js';
 import PropTypes from 'prop-types';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { fadeInVariants } from '../../helpers/motionUtils.js';
 
 export const Error = ({ error, setError }) => {
 	const onCloseError = () => setError(false);
@@ -11,16 +12,17 @@ export const Error = ({ error, setError }) => {
 			<S.OutClickOverlay
 				as={motion.div}
 				layout
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
+				initial={fadeInVariants.hidden}
+				animate={fadeInVariants.visible}
+				transition={fadeInVariants.transition}
 				onClick={onCloseError}
 			/>
 			<S.ErrorMessage
 				as={motion.div}
-				initial={{ opacity: '0', x: '-200%', y: '-50%' }}
-				animate={{ opacity: 1, x: '-50%', y: '-50%' }}
+				initial={{ ...fadeInVariants.hidden, x: '-200%', y: '-50%' }}
+				animate={{ ...fadeInVariants.visible, x: '-50%', y: '-50%' }}
 			>
-				{error} <S.Close onClick={onCloseError} />
+				{error} <S.Close autoFocus onClick={onCloseError} />
 			</S.ErrorMessage>
 		</S.ErrorWrapp>
 	);

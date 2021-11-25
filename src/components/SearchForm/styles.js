@@ -11,9 +11,7 @@ export const SearchForm = styled.div`
 
 export const Label = styled.label`
 	display: flex;
-	flex-direction: column;
-	margin-right: 20px;
-	flex: 1;
+	width: 100%;
 `;
 export const CityName = styled.p``;
 
@@ -23,7 +21,10 @@ export const Input = styled.input.attrs({
 })`
 	color: ${({ theme }) => theme.currentTheme.color};
 	margin-left: -10px;
+	margin-right: 20px;
 	padding-left: 5px;
+
+	flex: 1;
 
 	font-size: 26px;
 	font-weight: 300;
@@ -41,17 +42,17 @@ export const Input = styled.input.attrs({
 `;
 
 export const Close = styled.span`
-	& {
-		width: 20px;
-		height: 20px;
-		position: relative;
-		cursor: pointer;
-		opacity: 0.3;
-		transition: opacity 0.15s ease-in-out;
+	align-self: center;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	cursor: pointer;
+	opacity: 0.3;
+	transition: opacity 0.15s ease-in-out;
 
-		&:hover {
-			opacity: 1;
-		}
+	&:hover,
+	&:focus-visible {
+		opacity: 1;
 	}
 
 	&:after {

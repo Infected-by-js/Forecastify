@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 
 import { UpcomingForecastItem } from '../UpcomingForecastItem/';
 import { motion } from 'framer-motion';
+import { fadeInVariants } from '../../helpers/motionUtils.js';
 
 export const UpcomingForecast = ({ forecastList }) => {
 	return (
 		<S.UpcomingForecast
 			as={motion.ul}
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 0.1 }}
+			initial={fadeInVariants.hidden}
+			animate={fadeInVariants.visible}
+			transition={fadeInVariants.transition}
 		>
 			{forecastList.map(({ time, temp_c, condition: { icon, text } }, index) => (
 				<UpcomingForecastItem

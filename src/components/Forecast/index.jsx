@@ -10,6 +10,7 @@ import { Summary } from '../Summary';
 import { UpcomingForecast } from '../UpcomingForecast';
 
 import { formatForecastList } from '../../helpers/formatForecastList';
+import { fadeInVariants } from '../../helpers/motionUtils';
 
 export const Forecast = React.memo(({ loadForecast, forecast, setError }) => {
 	const forecastList = forecast.forecast.forecastday[0].hour;
@@ -25,9 +26,9 @@ export const Forecast = React.memo(({ loadForecast, forecast, setError }) => {
 		<AnimatePresence>
 			<S.Overlay
 				as={motion.div}
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.5 }}
+				initial={fadeInVariants.hidden}
+				animate={fadeInVariants.visible}
+				transition={fadeInVariants.transition}
 			>
 				<S.Container>
 					<SearchForm loadForecast={loadForecast} cityName={cityName} setError={setError} />

@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import * as S from './styles.js';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
+import { scaleInVariants, swipeTopVariants } from '../../helpers/motionUtils.js';
 
 export const SearchForm = ({ loadForecast, cityName, setError }) => {
 	const [queryName, setQueryName] = useState(cityName);
 
 	const onSubmitSearch = ({ key }) => {
-		if (queryName === cityName) return;
 		if (key === 'Enter') {
-			if (!queryName) {
-				setError('The search field must not be empty');
-				return;
-			}
+			if (queryName === cityName || !queryName) return;
 
 			loadForecast({ city: queryName });
 		}
@@ -26,15 +24,25 @@ export const SearchForm = ({ loadForecast, cityName, setError }) => {
 	};
 
 	return (
-		<S.SearchForm onBlur={onBlurHandler}>
-			<S.Label>
+		<S.SearchForm>
+			<S.Label onBlur={onBlurHandler}>
 				<S.Input
+					as={motion.input}
+					initial={swipeTopVariants.hidden}
+					animate={swipeTopVariants.visible}
+					transition={swipeTopVariants.transition}
 					value={queryName}
 					onChange={({ target }) => setQueryName(target.value)}
 					onKeyDown={onSubmitSearch}
 				/>
+				<S.Close
+					onClick={onClearInput}
+					as={motion.span}
+					initial={scaleInVariants.hidden}
+					animate={{ ...scaleInVariants.visible, opacity: 0.3 }}
+					transition={scaleInVariants.transition}
+				/>
 			</S.Label>
-			<S.Close onClick={onClearInput} />
 		</S.SearchForm>
 	);
 };

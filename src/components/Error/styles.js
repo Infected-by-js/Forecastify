@@ -51,7 +51,7 @@ export const ErrorMessage = styled.span`
 	user-select: none;
 `;
 
-export const Close = styled.span`
+export const Close = styled.button`
 	position: absolute;
 	right: 5px;
 	top: 5px;

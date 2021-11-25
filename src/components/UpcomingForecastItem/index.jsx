@@ -2,13 +2,14 @@ import React from 'react';
 import * as S from './styles.js';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+import { fadeInVariants } from '../../helpers/motionUtils.js';
 
 export const UpcomingForecastItem = ({ time, temp, weatherIconSrc, weatherDescription, id }) => {
 	return (
 		<S.UpcomingForecastItem
 			as={motion.li}
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
+			initial={fadeInVariants.hidden}
+			animate={fadeInVariants.visible}
 			transition={{ delay: 1 + id / 10 }}
 		>
 			<S.Title>{time}</S.Title>

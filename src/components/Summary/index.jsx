@@ -3,15 +3,27 @@ import * as S from './styles.js';
 import PropTypes from 'prop-types';
 import { IconHumidity, IconWind, IconSunrise, IconSunset } from '../../assets/icons';
 import { SummaryItem } from '../SummaryItem';
+import { motion } from 'framer-motion';
+import { swipeLeftVariants, swipeRightVariants } from '../../helpers/motionUtils.js';
 
 export const Summary = ({ humidity, wind, sunrise, sunset }) => {
 	return (
 		<S.Wrapp>
-			<S.Col>
+			<S.Col
+				as={motion.div}
+				initial={swipeLeftVariants.hidden}
+				animate={swipeLeftVariants.visible}
+				transition={swipeLeftVariants.transition}
+			>
 				<SummaryItem icon={IconHumidity} value={humidity} unit={'%'} />
 				<SummaryItem icon={IconWind} value={wind} unit={'m/sec'} />
 			</S.Col>
-			<S.Col>
+			<S.Col
+				as={motion.div}
+				initial={swipeRightVariants.hidden}
+				animate={swipeRightVariants.visible}
+				transition={swipeLeftVariants.transition}
+			>
 				<SummaryItem icon={IconSunrise} value={sunrise} />
 				<SummaryItem icon={IconSunset} value={sunset} />
 			</S.Col>
