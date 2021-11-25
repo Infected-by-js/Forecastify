@@ -9,7 +9,9 @@ As Third-Party API for the app is **Weather API**
 
 <p align="center"><a href="https://www.weatherapi.com/" title="Free Weather API"><img  src='https://cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a><p>
 
-## Demo - [Link](link)
+## Demo
+
+- [Github Pages](https://infected-by-js.github.io/Forecastify/)
 
 ## :fire: Packages
 
