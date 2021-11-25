@@ -5,7 +5,7 @@
 This application was built using create-react-app as a base, and the technologies used were **JavaScript ES6+** **React JS(React Hooks)**,  **Axios**, **Styled-Components** & **Framer-Motion**.
 
 As Third-Party API for the app was selected **Weather API**
-<p align="center"><a href="https://www.weatherapi.com/" title="Free Weather API"><img  src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a><p>
+<p align="center"><a href="https://www.weatherapi.com/" title="Free Weather API"><img  src='https://cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a><p>
 
 ## Demo - [Link](link)
 
