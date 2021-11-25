@@ -35,7 +35,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	min-width: 320px;
+	min-width: 500px;
 	min-height: 440px;
 
 	background-color: ${({ theme }) => theme.currentTheme.backgroundColor};
