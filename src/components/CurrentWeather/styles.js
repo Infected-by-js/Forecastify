@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE_SIZE } from '../../helpers/constants';
 
 export const MainTempWrapp = styled.div`
 	margin-bottom: 10px;
@@ -17,6 +18,13 @@ export const Temp = styled.span`
 	color: ${({ theme }) => theme.currentTheme.color};
 
 	user-select: none;
+
+	@media ${DEVICE_SIZE.mobile} {
+		font-size: 70px;
+	}
+	@media ${DEVICE_SIZE.tablet} {
+		font-size: 80px;
+	}
 `;
 export const Unit = styled.span`
 	font-weight: 300;

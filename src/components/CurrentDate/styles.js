@@ -27,7 +27,7 @@ export const MainTitle = styled.h1`
 	color: ${({ theme }) => theme.currentTheme.color};
 
 	@media ${DEVICE_SIZE.mobile} {
-		font-size: 50px;
+		font-size: 30px;
 	}
 	@media ${DEVICE_SIZE.tablet} {
 		font-size: 32px;
@@ -91,7 +91,7 @@ export const Time = styled.span`
 		font-size: 18px;
 		display: inline-block;
 		float: right;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 
 		& svg {
 		margin-left: 10px;

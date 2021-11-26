@@ -20,11 +20,14 @@ export const Overlay = styled.div`
 
 	@media ${DEVICE_SIZE.mobile} {
 		overflow-y: auto;
-		height: 100%;
+		align-items: flex-start;
+		height: 100vh;
 	}
 
 	@media ${DEVICE_SIZE.tablet} {
-		overflow: hidden;
+		overflow-y: auto;
+		align-items: flex-start;
+
 		height: 100vh;
 	} ;
 `;
@@ -79,7 +82,12 @@ export const MainBanner = styled.div`
 	}
 
 	@media ${DEVICE_SIZE.mobile} {
+		margin-bottom: 20px;
 		flex-direction: column-reverse;
+
+		& div:first-child {
+			margin-right: 0;
+		}
 	}
 
 	@media ${DEVICE_SIZE.tablet} {

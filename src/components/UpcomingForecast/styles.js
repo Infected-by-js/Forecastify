@@ -8,5 +8,7 @@ export const UpcomingForecast = styled.ul`
 
 	@media ${DEVICE_SIZE.mobile} {
 		overflow-x: auto;
+		align-items: center;
+		justify-content: flex-start;
 	}
 `;
